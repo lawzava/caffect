@@ -63,6 +63,8 @@ class Form extends Component
         $c->bitterness = $this->bitterness;
         $c->sweetness = $this->sweetness;
 
+        $c->user_id = auth()->user()->id;
+
         $c->save();
 
         $this->emit('saved');
