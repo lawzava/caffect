@@ -6,7 +6,7 @@ require 'vendor/deployer/recipes/recipe/rsync.php';
 
 // Project name
 set('application', 'Caffect');
-set('ssh_multiplexing', true);
+//set('ssh_multiplexing', true);
 
 set('rsync_src', function () {
     return __DIR__;
