@@ -1,18 +1,16 @@
 <?php
 namespace Deployer;
 
-// Include the Laravel & rsync recipes
 require 'recipe/laravel.php';
-require 'recipe/rsync.php';
+require 'vendor/deployer/recipes/recipe/rsync.php';
 
-set('application', 'caffect');
+// Project name
+set('application', 'Caffect');
 set('ssh_multiplexing', true);
 
 set('rsync_src', function () {
     return __DIR__;
 });
-
-inventory('hosts.yaml');
 
 add('rsync', [
     'exclude' => [
@@ -22,14 +20,21 @@ add('rsync', [
         '/vendor/',
         '/node_modules/',
         '.github',
-        'deploy.php',
+        'deploy.php'
     ],
 ]);
+
+inventory('hosts.yaml');
 
 task('deploy:secrets', function () {
     file_put_contents(__DIR__ . '/.env', getenv('DOT_ENV'));
     upload('.env', get('deploy_path') . '/shared');
 });
+
+task('deploy:framework:storage', function () {
+    run('cd {{release_path}} && mkdir -p storage/framework/cache storage/framework/views storage/framework/sessions');
+});
+
 
 after('deploy:failed', 'deploy:unlock');
 
@@ -43,6 +48,7 @@ task('deploy', [
     'rsync',
     'deploy:secrets',
     'deploy:shared',
+    'deploy:framework:storage',
     'deploy:vendors',
     'deploy:writable',
     'artisan:storage:link',
@@ -55,3 +61,4 @@ task('deploy', [
     'deploy:unlock',
     'cleanup',
 ]);
+
