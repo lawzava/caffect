@@ -1,4 +1,4 @@
-app.caffect.com:
+ssh.app.caffect.com:
   hostname: ssh.app.caffect.com
   port: 22
   user: ubuntu
