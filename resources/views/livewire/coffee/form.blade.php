@@ -9,31 +9,24 @@
 
     <x-slot name="form">
         <div class="mb-4 mt-4">
-            <div class="grid gap-4 lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-1">
-                <x-form-entry name="Name" id="name" type="text" />
-                <x-form-entry name="Brewing Method" id="brewing_method" type="text" />
-                <x-form-entry name="Roast" id="roast" type="text" />
-                <x-form-entry name="Grind" id="grind" type="text" />
-                <x-form-entry name="Origin" id="origin" type="text" />
-                <x-form-entry name="Producer" id="producer" type="text" />
+            <div class="grid gap-4 grid-cols-1 md:grid-cols-4">
+                <x-form-entry name="Name" id="name" type="text"/>
+                <x-form-entry name="Producer" id="producer" type="text"/>
+                <x-form-entry name="Origin" id="origin" type="text"/>
 
-                <x-form-entry name="Rate Notes" id="notes" type="number" />
-                <x-form-entry name="Rate Body" id="body" type="number" />
-                <x-form-entry name="Rate Aroma" id="aroma" type="number" />
-                <x-form-entry name="Rate Acidity" id="acidity" type="number" />
-                <x-form-entry name="Rate Bitterness" id="bitterness" type="number" />
-                <x-form-entry name="Rate Sweetness" id="sweetness" type="number" />
+                <x-form-entry name="Rate Aroma" id="aroma" type="number"/>
+                <x-form-entry name="Rate Taste" id="taste" type="number"/>
             </div>
         </div>
     </x-slot>
 
     <x-slot name="actions">
         <x-action-message class="mr-3 text-green-700 text-bold" on="saved">
-            {{ __('Added.') }}
+            {{ __('Saved.') }}
         </x-action-message>
 
         <x-button>
-            {{ __('Add New') }}
+            {{ __('Save') }}
         </x-button>
     </x-slot>
 </x-form>

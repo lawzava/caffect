@@ -1,4 +1,5 @@
 <?php
+
 namespace Deployer;
 
 require 'recipe/laravel.php';
@@ -20,7 +21,7 @@ add('rsync', [
         '/vendor/',
         '/node_modules/',
         '.github',
-        'deploy.php'
+        'deploy.php',
     ],
 ]);
 

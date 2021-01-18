@@ -39,14 +39,14 @@ return [
 
         'array' => [
             'driver' => 'array',
-            'serialize' => false,
+            'serialize' => FALSE,
         ],
 
         'database' => [
             'driver' => 'database',
             'table' => 'cache',
-            'connection' => null,
-            'lock_connection' => null,
+            'connection' => NULL,
+            'lock_connection' => NULL,
         ],
 
         'file' => [
@@ -101,6 +101,6 @@ return [
     |
     */
 
-    'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache'),
+    'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_cache'),
 
 ];
