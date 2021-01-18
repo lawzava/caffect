@@ -36,7 +36,7 @@ jobs:
           php-version: 8.0
           extension-csv: mbstring, bcmath
       - name: Composer install
-        run: composer install
+        run: composer install --optimize-autoloader --no-dev
       - name: Setup Deployer
         uses: atymic/deployer-php-action@master
         with:
@@ -45,4 +45,4 @@ jobs:
       - name: Deploy to Prod
         env:
           DOT_ENV: ${{ secrets.DOT_ENV }}
-        run: dep deploy production --tag=${{ env.GITHUB_REF }} -vvv
+        run: dep deploy production --tag=${{ $GITHUB_REF }} -vvv
