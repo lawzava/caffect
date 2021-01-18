@@ -36,7 +36,7 @@ jobs:
           php-version: 8.0
           extension-csv: mbstring, bcmath
       - name: Composer install
-        run: composer install --optimize-autoloader --no-dev
+        run: composer install
       - name: Setup Deployer
         uses: atymic/deployer-php-action@master
         with:
