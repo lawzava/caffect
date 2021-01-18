@@ -24,16 +24,17 @@ add('rsync', [
     ],
 ]);
 
+host('ssh.app.caffect.com')
+    ->hostname('172.31.37.16')
+    ->stage('production')
+    ->user('ubuntu')
+    ->set('deploy_path', '/var/www/app.caffect.com');
+
+
 task('deploy:secrets', function () {
     file_put_contents(__DIR__ . '/.env', getenv('DOT_ENV'));
     upload('.env', get('deploy_path') . '/shared');
 });
-
-host('ssh.app.caffect.com')
-->hostname('172.31.37.16')
-->stage('production')
-->user('ubuntu')
-->set('deploy_path', '/var/www/app.caffect.com');
 
 after('deploy:failed', 'deploy:unlock');
 
