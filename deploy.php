@@ -12,6 +12,8 @@ set('rsync_src', function () {
     return __DIR__;
 });
 
+inventory('hosts.yaml');
+
 add('rsync', [
     'exclude' => [
         '.git',
@@ -23,13 +25,6 @@ add('rsync', [
         'deploy.php',
     ],
 ]);
-
-host('ssh.app.caffect.com')
-    ->hostname('172.31.37.16')
-    ->stage('production')
-    ->user('ubuntu')
-    ->set('deploy_path', '/var/www/app.caffect.com');
-
 
 task('deploy:secrets', function () {
     file_put_contents(__DIR__ . '/.env', getenv('DOT_ENV'));

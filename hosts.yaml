@@ -1,0 +1,8 @@
+app.caffect.com:
+  hostname: ssh.app.caffect.com
+  port: 22
+  user: ubuntu
+  stage: production
+  branch: master
+  deploy_path: '/var/www/app.caffect.com'
+  pty: true
