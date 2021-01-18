@@ -30,7 +30,7 @@ task('deploy:secrets', function () {
 });
 
 host('ssh.app.caffect.com')
-->hostname('ip-172-31-37-16')
+->hostname('172.31.37.16')
 ->stage('production')
 ->user('ubuntu')
 ->set('deploy_path', '/var/www/app.caffect.com');
@@ -38,6 +38,7 @@ host('ssh.app.caffect.com')
 after('deploy:failed', 'deploy:unlock');
 
 desc('Deploy the application');
+
 task('deploy', [
     'deploy:info',
     'deploy:prepare',
