@@ -8,11 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Yarn Build
-        run: |
-          yarn install
-          yarn prod
-          cat public/mix-manifest.json
+      - uses: bahmutov/npm-install@v1
+      - run: npm run prod
       - name: Upload build files
         uses: actions/upload-artifact@v1
         with:
@@ -38,7 +35,7 @@ jobs:
       - name: Composer install
         run: composer install
       - name: Setup Deployer
-        uses: atymic/deployer-php-action@master
+        uses: atymic/deployer-php-action@0.2.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           ssh-known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
