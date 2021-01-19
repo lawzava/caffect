@@ -15,8 +15,8 @@
 
             <x-form-select name="origin" :options="$countries"/>
 
-            <x-form-input type="number" name="aroma" label="Aroma"/>
             <x-form-input type="number" name="taste" label="Taste"/>
+            <x-form-input type="number" name="aroma" label="Aroma"/>
             @endwire
 
             <div class="mt-6 flex items-center justify-end">
