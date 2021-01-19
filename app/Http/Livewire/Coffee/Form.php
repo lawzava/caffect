@@ -6,8 +6,8 @@ use App\Enums\Countries;
 use App\Models\Coffee;
 use Livewire\Component;
 
-const MAX_255 = 'nullable|max:255';
-const INT_1_10 = 'nullable|integer|between:1,10';
+const MAX_255 = 'required|max:255';
+const INT_1_10 = 'required|integer|between:1,10';
 
 class Form extends Component
 {
@@ -16,12 +16,13 @@ class Form extends Component
     public $origin;
     public $taste;
     public $aroma;
+    public $showDropdown = false;
 
 
     protected $rules = [
-        'name' => 'required|between:3,255',
+        'name' => MAX_255,
         'producer' => MAX_255,
-        'origin' => 'nullable|enum_value:' . Countries::class,
+        'origin' => 'required|enum_key:' . Countries::class,
         'taste' => INT_1_10,
         'aroma' => INT_1_10,
     ];
@@ -33,7 +34,14 @@ class Form extends Component
 
     public function render()
     {
-        return view('livewire.coffee.form');
+        $countries = Countries::asArray();
+
+        $c = new Coffee;
+
+        return view('livewire.coffee.form', [
+            'countries' => $countries,
+            'coffee' => $c,
+        ]);
     }
 
     public function createItem()
@@ -44,7 +52,7 @@ class Form extends Component
 
         $c->name = $this->name;
         $c->producer = $this->producer;
-        $c->origin = $this->origin;
+        $c->origin = Countries::getValue($this->origin);
         $c->taste = $this->taste;
         $c->aroma = $this->aroma;
 
@@ -53,5 +61,6 @@ class Form extends Component
         $c->save();
 
         $this->emit('saved');
+        $this->showDropdown = false;
     }
 }

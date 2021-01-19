@@ -17,11 +17,11 @@ class CreateCoffeeTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('producer')->nullable();
+            $table->string('producer');
             $table->string('origin');
 
-            $table->smallInteger('taste')->nullable();
-            $table->smallInteger('aroma')->nullable();
+            $table->smallInteger('taste');
+            $table->smallInteger('aroma');
 
             $table->integer('user_id');
         });

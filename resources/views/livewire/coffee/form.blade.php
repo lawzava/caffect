@@ -1,32 +1,25 @@
-<x-form submit="createItem">
-    <x-slot name="title">
-        {{ __('Create New Coffee Entry') }}
-    </x-slot>
+<div x-data="{ show: false }">
+    <div class="flex justify-end">
+        <a x-on:click.prevent="show=!show">
+           <button class="bg-yellow-900 text-white rounded hover:bg-yellow-900-500 px-4 py-3 cursor-pointer focus:outline-none mr-2">
+            Add New Coffee
+           </button>
+        </a>
+    </div>
 
-    <x-slot name="description">
-        {{ __('Create a new item in your coffee list.') }}
-    </x-slot>
+    <div x-show="show" class="border px-4 py-3 my-2 text-gray-700">
+        <x-form wire:submit.prevent="createItem">
+            @wire
+            <x-form-input name="name" label="Name"/>
+            <x-form-input name="producer" label="Producer"/>
 
-    <x-slot name="form">
-        <div class="mb-4 mt-4">
-            <div class="grid gap-4 grid-cols-1 md:grid-cols-4">
-                <x-form-entry name="Name" id="name" type="text"/>
-                <x-form-entry name="Producer" id="producer" type="text"/>
-                <x-form-entry name="Origin" id="origin" type="text"/>
+            <x-form-select name="origin" :options="$countries"/>
 
-                <x-form-entry name="Rate Aroma" id="aroma" type="number"/>
-                <x-form-entry name="Rate Taste" id="taste" type="number"/>
-            </div>
-        </div>
-    </x-slot>
+            <x-form-input type="number" name="aroma" label="Aroma"/>
+            <x-form-input type="number" name="taste" label="Aroma"/>
+            @endwire
 
-    <x-slot name="actions">
-        <x-action-message class="mr-3 text-green-700 text-bold" on="saved">
-            {{ __('Saved.') }}
-        </x-action-message>
-
-        <x-button>
-            {{ __('Save') }}
-        </x-button>
-    </x-slot>
-</x-form>
+            <x-form-submit/>
+        </x-form>
+    </div>
+</div>

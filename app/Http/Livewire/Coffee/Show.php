@@ -24,5 +24,7 @@ class Show extends Component
     public function deleteItem(Coffee $item)
     {
         $item->delete();
+
+        $this->emit('saved');
     }
 }

@@ -11,20 +11,27 @@
         </tr>
         </thead>
         <tbody>
+
         @foreach ($list as $item)
-            <tr @if($loop->even)class="bg-grey"@endif>
+            <tr>
                 <td class="border px-4 py-2">{{ $item->name }}</td>
                 <td class="border px-4 py-2">{{ $item->producer }}</td>
                 <td class="border px-4 py-2">{{ $item->origin }}</td>
                 <td class="border px-4 py-2">{{ $item->taste }}</td>
                 <td class="border px-4 py-2">{{ $item->aroma }}</td>
-                <td class="border px-4 py-2">
-                    <button wire:click="deleteItem({{ $item->id }})" class="bg-red-100 text-red-600 px-6 rounded-full">
-                        Delete
-                    </button>
-                </td>
+
+
+                <div xclass="border px-4 py-3 my-2 text-gray-700">
+                    <td class="border px-4 py-2">
+                        <button wire:click="deleteItem({{ $item->id }})"
+                                class="bg-red-100 text-red-600 px-6 rounded-full">
+                            Delete
+                        </button>
+                    </td>
+                </div>
             </tr>
         @endforeach
+
         </tbody>
     </table>
 

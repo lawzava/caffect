@@ -7,10 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Coffee extends Model
 {
-    protected $casts = [
-        'origins' => 'array',
-    ];
-
     public function user()
     {
         return $this->belongsTo(User::class);
