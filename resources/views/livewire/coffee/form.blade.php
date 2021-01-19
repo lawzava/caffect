@@ -1,4 +1,4 @@
-<div x-data="{ show: false }">
+<div x-data="{ show: true }">
     <div class="flex justify-end">
         <a x-on:click.prevent="show=!show">
            <button class="bg-yellow-900 text-white rounded hover:bg-yellow-900-500 px-4 py-3 cursor-pointer focus:outline-none mr-2">
@@ -16,10 +16,14 @@
             <x-form-select name="origin" :options="$countries"/>
 
             <x-form-input type="number" name="aroma" label="Aroma"/>
-            <x-form-input type="number" name="taste" label="Aroma"/>
+            <x-form-input type="number" name="taste" label="Taste"/>
             @endwire
 
-            <x-form-submit/>
+            <div class="mt-6 flex items-center justify-end">
+                <button type="submit" class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline">
+                    Save
+                </button>
+            </div>
         </x-form>
     </div>
 </div>
