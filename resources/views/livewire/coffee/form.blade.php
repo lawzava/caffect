@@ -1,4 +1,4 @@
-<div x-data="{ show: true }">
+<div x-data="{ show: false }">
     <div class="flex justify-end">
         <a x-on:click.prevent="show=!show">
            <button class="bg-yellow-900 text-white rounded hover:bg-yellow-900-500 px-4 py-3 cursor-pointer focus:outline-none mr-2">
