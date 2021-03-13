@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Coffee extends Model
 {
+    protected $fillable = [
+        'name',
+        'producer',
+        'origin',
+        'taste',
+        'aroma',
+        'user_id'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
