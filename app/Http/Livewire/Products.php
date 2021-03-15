@@ -27,7 +27,7 @@ class Products extends Component
     public function render()
     {
         return view('livewire.products', [
-            'products' => Coffee::latest()->paginate(10)
+            'products' => Coffee::where("user_id", auth()->user()->id)->latest()->paginate(10)
         ]);
     }
 
@@ -35,7 +35,7 @@ class Products extends Component
     {
         $this->showModal = true;
         $this->productId = $productId;
-        $this->product = Coffee::find($productId);
+        $this->product = Coffee::where("user_id", auth()->user()->id)->find($productId);
     }
 
     public function create()
@@ -65,7 +65,7 @@ class Products extends Component
 
     public function delete($productId)
     {
-        $product = Coffee::find($productId);
+        $product = Coffee::where("user_id", auth()->user()->id)->find($productId);
         if ($product) {
             $product->delete();
         }
