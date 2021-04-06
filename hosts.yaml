@@ -1,5 +1,5 @@
 ssh.app.caffect.com:
-  hostname: ssh.app.caffect.com
+  hostname: frankwork.zava.dev
   port: 22
   user: ubuntu
   stage: production
