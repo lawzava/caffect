@@ -22,8 +22,7 @@
         "protonemedia/laravel-form-components": "^2.5"
     },
     "require-dev": {
-        "deployer/dist": "^6.8",
-        "deployer/recipes": "^6.2",
+        "roave/security-advisories": "dev-latest",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
